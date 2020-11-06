@@ -1,0 +1,24 @@
+{% extends 'shop/index.html' %}
+{% block content %}
+    <div class="center-block">
+        {% if object.image %}
+            <img src="{{ object.image.url }}" alt="{{ object.item }}" height="70%" width="70%">
+        {% else %}
+            <img src='https://library.ucf.edu/wp-content/uploads/sites/5/2015/08/photo-not-available.jpg' alt="img" height="58%" width="58%">
+        {% endif %}
+        <h2>Price is ${{ object.price }}</h2>
+        <br>
+        <h3>Description</h3>
+        <p>{{ object.description }}</p>
+        <p>Dorm information: {{ object.contact_information }}</p>
+        <p><a href="mailto:{{ object.creator.email }}">Send Email</a>: {{ object.creator.email }}</p>
+        <p>Published: {{ object.pub_date }}</p>
+        {% if user.snapchat %}
+            <p>Snapchat: {{ object.user.snapchat }}</p>
+        {% else %}
+            <p>Snapchat: None</p>
+        {% endif %}
+        <br>
+        <p>Id of publication: {{ object.id }}</p>
+    </div>
+{% endblock %}
